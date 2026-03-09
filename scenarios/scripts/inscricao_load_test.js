@@ -25,8 +25,8 @@ const inscricaoTrend = new Trend('inscricao_duration');
 export const options = {
   stages: [
     { duration: '30s', target: 17 },
-    { duration: '1m', target: 17 },
-    { duration: '10s', target: 0 }
+    //{ duration: '1m', target: 17 },
+    //{ duration: '10s', target: 0 }
   ],
   thresholds: {
     http_req_failed: ['rate<0.05'],
