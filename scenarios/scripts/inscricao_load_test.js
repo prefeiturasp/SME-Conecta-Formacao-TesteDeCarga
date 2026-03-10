@@ -17,21 +17,23 @@ const admin = JSON.parse(open('../data/usuarios.json')).admin;
 // ---------------- ENV ----------------
 const BASE_URL = __ENV.BASE_URL;
 const FORMACAO_ID = Number(__ENV.FORMACAO_ID);
+const PROPOSTA_TURMA_ID = Number(__ENV.PROPOSTA_TURMA_ID);
 
 // ---------------- MÉTRICAS ----------------
 const inscricaoTrend = new Trend('inscricao_duration');
+const postInscricaoTrend = new Trend('post_inscricao_duration');
 
 // ---------------- CONFIG ----------------
 export const options = {
   stages: [
-    { duration: '30s', target: 17 },
-    //{ duration: '1m', target: 17 },
-    //{ duration: '10s', target: 0 }
+    { duration: '30s', target: 3 },
+    // { duration: '1m', target: 17 },
+    // { duration: '10s', target: 0 }
   ],
   thresholds: {
     http_req_failed: ['rate<0.05'],
-    http_req_duration: ['p(95)<2000']
-  }
+    http_req_duration: ['p(95)<2000'],
+  },
 };
 
 // ---------------- TEST ----------------
@@ -39,15 +41,19 @@ export default function () {
 
   const usuario = usuarios[(__VU - 1) % usuarios.length];
 
-  // LOGIN
+  // ---------------- LOGIN ----------------
   const loginRes = http.post(
     `${BASE_URL}/api/v1/autenticacao`,
     JSON.stringify(usuario),
-    { headers: { 'Content-Type': 'application/json' } }
+    {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
   );
 
   check(loginRes, {
-    'login ok': r => r.status === 200
+    'login ok': (r) => r.status === 200,
   });
 
   const token = loginRes.json('token');
@@ -57,12 +63,49 @@ export default function () {
     return;
   }
 
-  const headers = {
+  const authHeaders = {
     headers: {
       Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json'
-    }
+      'Content-Type': 'application/json',
+    },
   };
+
+ // ---------------- INSCRIÇÃO ----------------
+
+const payloadInscricao = JSON.stringify({
+  propostaTurmaId: 15565,
+  cargoCodigo: "3213",
+  cargoDreCodigo: "109300",
+  cargoUeCodigo: "019199",
+  tipoVinculo: 1,
+  vagaRemanescente: false,
+  usuarioAcessibilidade: {
+    possuiDeficiencia: false,
+    salvar: true
+  }
+});
+
+const resInscricao = http.post(
+  `${BASE_URL}/api/v1/Inscricao`,
+  payloadInscricao,
+  authHeaders
+);
+
+postInscricaoTrend.add(resInscricao.timings.duration);
+
+console.log(
+  `VU ${__VU} | Usuario ${usuario.login} | Status inscrição: ${resInscricao.status}`
+);
+
+// log detalhado para debug
+if (resInscricao.status !== 200 && resInscricao.status !== 201) {
+  console.log(`Erro inscrição usuário ${usuario.login}`);
+  console.log(`Resposta API: ${resInscricao.body}`);
+}
+
+check(resInscricao, {
+  'inscricao sucesso': (r) => r.status === 200 || r.status === 201,
+});
 
   // ---------------- CONSULTAS ----------------
   group('Fluxo de consulta formação', () => {
@@ -76,19 +119,17 @@ export default function () {
       `/api/v1/publico/formacao-listagem`,
       `/api/v1/publico/formacao-detalhada/${FORMACAO_ID}`,
       `/api/v1/Inscricao/turmas/${FORMACAO_ID}`,
-      `/api/v1/Inscricao/dados-inscricao-proposta/${FORMACAO_ID}`
+      `/api/v1/Inscricao/dados-inscricao-proposta/${FORMACAO_ID}`,
     ];
 
     endpoints.forEach((url) => {
-
-      const res = http.get(`${BASE_URL}${url}`, headers);
+      const res = http.get(`${BASE_URL}${url}`, authHeaders);
 
       inscricaoTrend.add(res.timings.duration);
 
       check(res, {
-        [`${url} 200`]: r => r.status === 200
+        [`${url} 200`]: (r) => r.status === 200,
       });
-
     });
 
   });
