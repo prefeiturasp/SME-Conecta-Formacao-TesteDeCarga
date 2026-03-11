@@ -63,7 +63,7 @@ function track(res, name) {
 // ---------------- CONFIG ----------------
 export const options = {
   stages: [
-    { duration: '60s', target: 100 },
+    { duration: '60s', target: 500 },
   ],
   thresholds: {
     http_req_failed: ['rate<0.05'],
