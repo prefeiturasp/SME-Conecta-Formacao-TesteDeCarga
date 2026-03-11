@@ -140,8 +140,8 @@ check(resInscricao, {
 // ---------------- RELATÓRIO ----------------
 export function handleSummary(data) {
   return {
-    'report/load_teste.json': JSON.stringify(data, null, 2),
-    'report/load_teste.html': htmlReport(data),
+    'scenarios/report/load_teste.json': JSON.stringify(data, null, 2),
+    'scenarios/report/load_teste.html': htmlReport(data),
     stdout: textSummary(data, { indent: ' ', enableColors: true }),
   };
 }

@@ -1,8 +1,24 @@
 {
   "cursistas": [
+   {
+      "login": "96337441800",
+      "senha": "77cvn6nLcy"
+    },
     {
-      "login": "13771859077",
-      "senha": "59ROWOL7Xh"
+      "login": "55522580887",
+      "senha": "4M7p8LTdnZ"
+    },
+    {
+      "login": "64435279096",
+      "senha": "76u9NU7Uqx"
+    },
+    {
+      "login": "82451293136",
+      "senha": "66MKtwsC0l"
+    },
+    {
+      "login": "22891132980",
+      "senha": "RpKirUcFY6"
     }
   ],
   "admin": {
