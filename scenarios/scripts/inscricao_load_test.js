@@ -17,7 +17,18 @@ const admin = JSON.parse(open('../data/usuarios.json')).admin;
 // ---------------- ENV ----------------
 const BASE_URL = __ENV.BASE_URL;
 const FORMACAO_ID = Number(__ENV.FORMACAO_ID);
-const PROPOSTA_TURMA_ID = Number(__ENV.PROPOSTA_TURMA_ID);
+
+// lista de turmas vinda do ENV
+const PROPOSTA_TURMA_IDS = (__ENV.PROPOSTA_TURMA_ID || "")
+  .split(',')
+  .map(id => Number(id.trim()))
+  .filter(id => !isNaN(id));
+
+// dados do cargo
+const CARGO_CODIGO = __ENV.CARGO_CODIGO;
+const CARGO_DRE_CODIGO = __ENV.CARGO_DRE_CODIGO;
+const CARGO_UE_CODIGO = __ENV.CARGO_UE_CODIGO;
+const TIPO_VINCULO = Number(__ENV.TIPO_VINCULO);
 
 // ---------------- MÉTRICAS ----------------
 const inscricaoTrend = new Trend('inscricao_duration');
@@ -26,7 +37,7 @@ const postInscricaoTrend = new Trend('post_inscricao_duration');
 // ---------------- CONFIG ----------------
 export const options = {
   stages: [
-    { duration: '30s', target: 3 },
+    { duration: '30s', target: 50 },
     // { duration: '1m', target: 17 },
     // { duration: '10s', target: 0 }
   ],
@@ -72,12 +83,15 @@ export default function () {
 
  // ---------------- INSCRIÇÃO ----------------
 
+const propostaTurmaId =
+PROPOSTA_TURMA_IDS[(__VU + __ITER) % PROPOSTA_TURMA_IDS.length];
+
 const payloadInscricao = JSON.stringify({
-  propostaTurmaId: 15565,
-  cargoCodigo: "3213",
-  cargoDreCodigo: "109300",
-  cargoUeCodigo: "019199",
-  tipoVinculo: 1,
+  propostaTurmaId: propostaTurmaId,
+  cargoCodigo: CARGO_CODIGO,
+  cargoDreCodigo: CARGO_DRE_CODIGO,
+  cargoUeCodigo: CARGO_UE_CODIGO,
+  tipoVinculo: TIPO_VINCULO,
   vagaRemanescente: false,
   usuarioAcessibilidade: {
     possuiDeficiencia: false,
