@@ -63,7 +63,7 @@ function track(res, name) {
 // ---------------- CONFIG ----------------
 export const options = {
   stages: [
-    { duration: '30s', target: 50 },
+    { duration: '60s', target: 100 },
   ],
   thresholds: {
     http_req_failed: ['rate<0.05'],
@@ -168,8 +168,8 @@ export default function () {
 // ---------------- RELATÓRIO ----------------
 export function handleSummary(data) {
   return {
-    'scenarios/report/load_teste.json': JSON.stringify(data, null, 2),
-    'scenarios/report/load_teste.html': htmlReport(data),
+    './scenarios/report/load_teste.json': JSON.stringify(data, null, 2),
+    './scenarios/report/load_teste.html': htmlReport(data),
     stdout: textSummary(data, { indent: ' ', enableColors: true }),
   };
 }
