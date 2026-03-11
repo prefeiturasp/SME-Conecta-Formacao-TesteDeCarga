@@ -1,504 +1,196 @@
 {
   "cursistas": [
-    {
-      "login": "07757691699",
-      "senha": "QSoHEA2ZIc"
-    },
-    {
-      "login": "19589418163",
-      "senha": "NNwLVAi6SM"
-    },
-    {
-      "login": "10280501862",
-      "senha": "3uAgJXkKqk"
-    },
-    {
-      "login": "48391183025",
-      "senha": "sslsC2SOw_"
-    },
-    {
-      "login": "95730504802",
-      "senha": "xK1MMARL7n"
-    },
-    {
-      "login": "32271496560",
-      "senha": "x2RZImwCwq"
-    },
-    {
-      "login": "24502856363",
-      "senha": "a08ZPhOMqk"
-    },
-    {
-      "login": "10271423706",
-      "senha": "io1X1kgXuN"
-    },
-    {
-      "login": "38429898492",
-      "senha": "kfvzGNUdya"
-    },
-    {
-      "login": "32707118087",
-      "senha": "5M50NJwehx"
-    },
-    {
-      "login": "43858067806",
-      "senha": "DEigqAzxoj"
-    },
-    {
-      "login": "53488252043",
-      "senha": "ycod9M6cAp"
-    },
-    {
-      "login": "83555659596",
-      "senha": "guCB6D7Yv4"
-    },
-    {
-      "login": "02887879944",
-      "senha": "zeqZsyimnn"
-    },
-    {
-      "login": "93166340408",
-      "senha": "Vhk2MJ4Eh0"
-    },
-    {
-      "login": "73098521090",
-      "senha": "1RN3xZ7uZC"
-    },
-    {
-      "login": "19041869557",
-      "senha": "5_xyOGxuEj"
-    },
-    {
-      "login": "80755403010",
-      "senha": "63EGnqMyhi"
-    },
-    {
-      "login": "01487054300",
-      "senha": "otE7iNeJqs"
-    },
-    {
-      "login": "48277083556",
-      "senha": "qdQ7PmmrZM"
-    },
-    {
-      "login": "63910704743",
-      "senha": "aI7nkR1tHw"
-    },
-    {
-      "login": "33990363530",
-      "senha": "Zs3d19WJP6"
-    },
-    {
-      "login": "67685854600",
-      "senha": "jgz_Fa_7mr"
-    },
-    {
-      "login": "75140248328",
-      "senha": "6BoscBPiXm"
-    },
-    {
-      "login": "47909466498",
-      "senha": "0twCzHRYht"
-    },
-    {
-      "login": "00519199073",
-      "senha": "9W4QlArYN5"
-    },
-    {
-      "login": "01017113106",
-      "senha": "NMzMrxkBXx"
-    },
-    {
-      "login": "92523753685",
-      "senha": "tSnVkMiO6N"
-    },
-    {
-      "login": "08238506689",
-      "senha": "lxbRRb255e"
-    },
-    {
-      "login": "15955717102",
-      "senha": "8nR68XIs9f"
-    },
-    {
-      "login": "46472558086",
-      "senha": "P4O22y64vy"
-    },
-    {
-      "login": "62320920749",
-      "senha": "56gyE8czaO"
-    },
-    {
-      "login": "62042287148",
-      "senha": "6kmIQ284qo"
-    },
-    {
-      "login": "88338869643",
-      "senha": "Io3zsakxPL"
-    },
-    {
-      "login": "45624877714",
-      "senha": "Oqi90aXeLJ"
-    },
-    {
-      "login": "99968343870",
-      "senha": "jUammd_EEL"
-    },
-    {
-      "login": "52069110460",
-      "senha": "qB6R0Wjlvu"
-    },
-    {
-      "login": "77618741743",
-      "senha": "IsmMIp4aXc"
-    },
-    {
-      "login": "81386982172",
-      "senha": "m4XTqA0jFj"
-    },
-    {
-      "login": "64366410508",
-      "senha": "ap9XXFL9JF"
-    },
-    {
-      "login": "04833929449",
-      "senha": "HRT5xFDK9O"
-    },
-    {
-      "login": "62530567514",
-      "senha": "nkCFPpHRXv"
-    },
-    {
-      "login": "52608209750",
-      "senha": "mFHJyJLCMq"
-    },
-    {
-      "login": "09876777130",
-      "senha": "YsPjptze9n"
-    },
-    {
-      "login": "71377717003",
-      "senha": "Ou08f4Y2Sr"
-    },
-    {
-      "login": "93143059451",
-      "senha": "KOKBai2LkK"
-    },
-    {
-      "login": "85969428906",
-      "senha": "XHlByYJq8c"
-    },
-    {
-      "login": "47533581784",
-      "senha": "JcjQ1Y98eE"
-    },
-    {
-      "login": "55074112710",
-      "senha": "A4GFoCA8Kj"
-    },
-    {
-      "login": "94355927407",
-      "senha": "ujSvDPNVnh"
-    },
-    {
-      "login": "40322169240",
-      "senha": "iyxqJHQf7C"
-    },
-    {
-      "login": "44490596200",
-      "senha": "ERDla_K6O8"
-    },
-    {
-      "login": "50853209804",
-      "senha": "TJpJTV9POW"
-    },
-    {
-      "login": "13929280604",
-      "senha": "r3JNB6yMn8"
-    },
-    {
-      "login": "35175423002",
-      "senha": "BwRY8EKuYq"
-    },
-    {
-      "login": "97661937387",
-      "senha": "Y0nbv6dGC9"
-    },
-    {
-      "login": "00829527605",
-      "senha": "Auqirsubde"
-    },
-    {
-      "login": "91777812879",
-      "senha": "tb7yyOPOj5"
-    },
-    {
-      "login": "63457691347",
-      "senha": "WBOiSnq_Xo"
-    },
-    {
-      "login": "40121756882",
-      "senha": "QIshTe1krx"
-    },
-    {
-      "login": "74153847682",
-      "senha": "cLuwCnr313"
-    },
-    {
-      "login": "34490176244",
-      "senha": "JMcdICFcz_"
-    },
-    {
-      "login": "30508401100",
-      "senha": "ITzG0aLoFp"
-    },
-    {
-      "login": "47765852272",
-      "senha": "OF8YT2TxOz"
-    },
-    {
-      "login": "55440189874",
-      "senha": "ZA2k6CVdQW"
-    },
-    {
-      "login": "25513570637",
-      "senha": "CD4ncvHoHN"
-    },
-    {
-      "login": "77475539784",
-      "senha": "ON7bB2KI3Y"
-    },
-    {
-      "login": "20966101928",
-      "senha": "wenmXA86ne"
-    },
-    {
-      "login": "15489953713",
-      "senha": "VpPqxe3shG"
-    },
-    {
-      "login": "97498810280",
-      "senha": "2_gNVNUZbj"
-    },
-    {
-      "login": "75611626424",
-      "senha": "FMa3iqpmE0"
-    },
-    {
-      "login": "22458260519",
-      "senha": "uK4oIWTG4z"
-    },
-    {
-      "login": "03932147618",
-      "senha": "Gxd7ECL4u8"
-    },
-    {
-      "login": "84400740692",
-      "senha": "f5Mcx9PSNn"
-    },
-    {
-      "login": "56213434259",
-      "senha": "7SbeOMeDK6"
-    },
-    {
-      "login": "90070924562",
-      "senha": "6is2yn1owQ"
-    },
-    {
-      "login": "05366162483",
-      "senha": "RGE446v9cg"
-    },
-    {
-      "login": "46496924821",
-      "senha": "uj0B8WNQ2P"
+{
+      "login": "63508802779",
+      "senha": "Is9Sn3X1JM"
     },
     {
-      "login": "62039709649",
-      "senha": "jSSC3c5_i8"
+      "login": "80957024207",
+      "senha": "DAdwQuDjrq"
     },
     {
-      "login": "99040691150",
-      "senha": "8ZNSME4RHb"
+      "login": "90225790505",
+      "senha": "wKupYbYyGA"
     },
     {
-      "login": "10395320046",
-      "senha": "Cw0AIH25Mx"
+      "login": "15104089592",
+      "senha": "0j1MrXgMKc"
     },
     {
-      "login": "45089033129",
-      "senha": "dWLGIBrMGZ"
+      "login": "79533024380",
+      "senha": "ntF_DvriWE"
     },
     {
-      "login": "21702998231",
-      "senha": "dQuzXM9hpk"
+      "login": "33267007925",
+      "senha": "xzLHOuXQqw"
     },
     {
-      "login": "20179646893",
-      "senha": "UAosLpOA2z"
+      "login": "19237575556",
+      "senha": "89PCR4Munj"
     },
     {
-      "login": "39331772866",
-      "senha": "f4FT7EQPAc"
+      "login": "04504392321",
+      "senha": "59qrY05EKL"
     },
     {
-      "login": "10222653345",
-      "senha": "PIwWyYzyiB"
+      "login": "49015773289",
+      "senha": "iOPwi6T5Br"
     },
     {
-      "login": "37550001995",
-      "senha": "HlxXbEDagn"
+      "login": "31672935946",
+      "senha": "NwFbUe1s5t"
     },
     {
-      "login": "98090295940",
-      "senha": "tXMfYxhFzs"
+      "login": "93234952710",
+      "senha": "_TO7xoxTxJ"
     },
     {
-      "login": "70352232749",
-      "senha": "W3jgPqspyZ"
+      "login": "91945791560",
+      "senha": "i7fCszADkE"
     },
     {
-      "login": "00317752847",
-      "senha": "CjSokkysX8"
+      "login": "69443793687",
+      "senha": "k5aNNuJ1uK"
     },
     {
-      "login": "36346696670",
-      "senha": "6faCwNyQ6q"
+      "login": "14842613807",
+      "senha": "ZmijJK1ysP"
     },
     {
-      "login": "07312223427",
-      "senha": "We4LxBUY9f"
+      "login": "35482333256",
+      "senha": "DmtQmnbjXa"
     },
     {
-      "login": "28529117603",
-      "senha": "LLnAtpWSEp"
+      "login": "57124808243",
+      "senha": "TtO4pE0J8R"
     },
     {
-      "login": "05016969973",
-      "senha": "4cW6osKILX"
+      "login": "12788167393",
+      "senha": "69KEwXLV2q"
     },
     {
-      "login": "50572501919",
-      "senha": "fCYCm8fySm"
+      "login": "02008574873",
+      "senha": "X4ecuG7Egq"
     },
     {
-      "login": "34245645326",
-      "senha": "gFfhF9B62k"
+      "login": "22467600033",
+      "senha": "LaX5_lz3Qs"
     },
     {
-      "login": "02049442521",
-      "senha": "tuPeMy6r_T"
+      "login": "33000987347",
+      "senha": "LJpTvmz9Jv"
     },
     {
-      "login": "82890176690",
-      "senha": "v7_2NdDxF7"
+      "login": "01985383837",
+      "senha": "fyhDvPQj0d"
     },
     {
-      "login": "32763178936",
-      "senha": "BAxQTHHbgC"
+      "login": "67593707326",
+      "senha": "Z08ful9TE1"
     },
     {
-      "login": "00040971651",
-      "senha": "aH6pwcgpe5"
+      "login": "33785945353",
+      "senha": "20cTcfa6jT"
     },
     {
-      "login": "11427121176",
-      "senha": "AtNJD1LObW"
+      "login": "32069143376",
+      "senha": "4roGU62rSg"
     },
     {
-      "login": "81703230965",
-      "senha": "R9Z4KVK1X5"
+      "login": "05814991747",
+      "senha": "Yo428OxcOi"
     },
     {
-      "login": "47029512200",
-      "senha": "9Wlvf6xy5V"
+      "login": "08050194990",
+      "senha": "u46ltv8QK2"
     },
     {
-      "login": "78344633737",
-      "senha": "RS1v6Yt_D0"
+      "login": "96830107920",
+      "senha": "04iLD6uTbh"
     },
     {
-      "login": "76576127464",
-      "senha": "ppCF79fBvA"
+      "login": "28693437445",
+      "senha": "ANQ8WCM9A9"
     },
     {
-      "login": "53358937020",
-      "senha": "TArrO2wkyD"
+      "login": "29228053283",
+      "senha": "aS7aWiUFeT"
     },
     {
-      "login": "38690947701",
-      "senha": "LvbwxGRvqo"
+      "login": "89212127959",
+      "senha": "WQx9Rm82gA"
     },
     {
-      "login": "62111300233",
-      "senha": "yk_3CkW9V7"
+      "login": "35890321706",
+      "senha": "yCLnp5JD4e"
     },
     {
-      "login": "36051625259",
-      "senha": "FBREPiNych"
+      "login": "39187758954",
+      "senha": "IgVplkWJm_"
     },
     {
-      "login": "87884178591",
-      "senha": "LqXo4W4aaz"
+      "login": "88943001290",
+      "senha": "A7lW1tznHw"
     },
     {
-      "login": "98895404360",
-      "senha": "dDMZoCdfrG"
+      "login": "36562440220",
+      "senha": "plXW6QH_My"
     },
     {
-      "login": "38302080810",
-      "senha": "8dOkE_yck0"
+      "login": "02885051906",
+      "senha": "8ElDTY_g8C"
     },
     {
-      "login": "16686312886",
-      "senha": "TYjGAYdvvn"
+      "login": "07369701859",
+      "senha": "kVTSCcDrzL"
     },
     {
-      "login": "74412670996",
-      "senha": "S_ikBPik4b"
+      "login": "45265893814",
+      "senha": "5JS9tdz2jj"
     },
     {
-      "login": "00880420065",
-      "senha": "yndcl42ryX"
+      "login": "58563462970",
+      "senha": "p3DWdAnRIx"
     },
     {
-      "login": "67466852920",
-      "senha": "8Sjuzd98ad"
+      "login": "17403136071",
+      "senha": "Q5gn5tF39W"
     },
     {
-      "login": "17850657691",
-      "senha": "0AynRov5wB"
+      "login": "21989902022",
+      "senha": "rOgBReDd9J"
     },
     {
-      "login": "74051039447",
-      "senha": "1et0yrGXo8"
+      "login": "93955177432",
+      "senha": "l32vaAAgKm"
     },
     {
-      "login": "75998775503",
-      "senha": "3UBNXFUKpP"
+      "login": "31944566104",
+      "senha": "HpUrox5Ftc"
     },
     {
-      "login": "86145914629",
-      "senha": "Pymr3fiMhp"
+      "login": "79495146470",
+      "senha": "hsS8co9ySH"
     },
     {
-      "login": "57004423611",
-      "senha": "K5GcEG43wt"
+      "login": "05698750726",
+      "senha": "dkflWUH6na"
     },
     {
-      "login": "52889058271",
-      "senha": "NDCrjmEnRy"
+      "login": "06327386776",
+      "senha": "TGic39dgIi"
     },
     {
-      "login": "26765994530",
-      "senha": "VDnLP3TvuB"
+      "login": "30585147604",
+      "senha": "2J41YZn2Yw"
     },
     {
-      "login": "24067806604",
-      "senha": "svKjt7R_BQ"
+      "login": "42984692047",
+      "senha": "mo2YxzuIFa"
     },
     {
-      "login": "98788946908",
-      "senha": "HHaQ2uBrAV"
+      "login": "46904019697",
+      "senha": "Z4giOxpquf"
     }
   ],
   "admin": {

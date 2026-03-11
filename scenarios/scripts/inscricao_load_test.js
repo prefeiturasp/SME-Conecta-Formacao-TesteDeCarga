@@ -6,13 +6,6 @@ import { SharedArray } from 'k6/data';
 import { textSummary } from 'https://jslib.k6.io/k6-summary/0.0.1/index.js';
 import { htmlReport } from 'https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js';
 
-// ----------------- MÉTRICAS -----------------
-export let Duration = new Trend('duration_total');
-export let FailRate = new Rate('fail_rate');
-export let SuccessRate = new Rate('success_rate');
-export let Reqs = new Counter('reqs_total');
-export let Errors = new Counter('errors_total');
-
 // ---------------- LOAD DATA ----------------
 const usuarios = new SharedArray('usuarios', function () {
   const data = JSON.parse(open('../data/usuarios.json'));
@@ -41,31 +34,30 @@ const TIPO_VINCULO = Number(__ENV.TIPO_VINCULO);
 const inscricaoTrend = new Trend('inscricao_duration');
 const postInscricaoTrend = new Trend('post_inscricao_duration');
 
-const Duration = new Trend('custom_duration');
-const Reqs = new Counter('custom_requests');
-const FailRate = new Rate('custom_fail_rate');
-const SuccessRate = new Rate('custom_success_rate');
-const Errors = new Counter('custom_errors');
+// métricas usadas pela função track()
+const TrackDuration = new Trend('track_duration');
+const TrackReqs = new Counter('track_requests');
+const TrackFailRate = new Rate('track_fail_rate');
+const TrackSuccessRate = new Rate('track_success_rate');
+const TrackErrors = new Counter('track_errors');
 
 // ----------------- FUNÇÕES AUXILIARES -----------------
-function textoPlanejamento() {
-  return '<p>' + 'Planejamento de aula automatizado. '.repeat(10) + '</p>';
-}
 
 function track(res, name) {
+
   if (res.status !== 200) {
     console.log(`⚠️ [${name}] falhou. Status: ${res.status}`);
     console.log(`Body: ${res.body}`);
   }
 
-  Duration.add(res.timings.duration);
-  Reqs.add(1);
-  FailRate.add(res.status === 0 || res.status > 399);
-  SuccessRate.add(res.status > 0 && res.status < 399);
+  TrackDuration.add(res.timings.duration);
+  TrackReqs.add(1);
+  TrackFailRate.add(res.status === 0 || res.status > 399);
+  TrackSuccessRate.add(res.status > 0 && res.status < 399);
 
   check(res, {
     [`${name} - status 200`]: (r) => r.status === 200
-  }) || Errors.add(1);
+  }) || TrackErrors.add(1);
 }
 
 // ---------------- CONFIG ----------------
