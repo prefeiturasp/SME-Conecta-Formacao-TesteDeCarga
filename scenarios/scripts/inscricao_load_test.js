@@ -1,10 +1,17 @@
 import http from 'k6/http';
 import { check, sleep, group } from 'k6';
-import { Trend } from 'k6/metrics';
+import { Trend, Counter, Rate } from 'k6/metrics';
 import { SharedArray } from 'k6/data';
 
 import { textSummary } from 'https://jslib.k6.io/k6-summary/0.0.1/index.js';
 import { htmlReport } from 'https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js';
+
+// ----------------- MÉTRICAS -----------------
+export let Duration = new Trend('duration_total');
+export let FailRate = new Rate('fail_rate');
+export let SuccessRate = new Rate('success_rate');
+export let Reqs = new Counter('reqs_total');
+export let Errors = new Counter('errors_total');
 
 // ---------------- LOAD DATA ----------------
 const usuarios = new SharedArray('usuarios', function () {
@@ -34,12 +41,37 @@ const TIPO_VINCULO = Number(__ENV.TIPO_VINCULO);
 const inscricaoTrend = new Trend('inscricao_duration');
 const postInscricaoTrend = new Trend('post_inscricao_duration');
 
+const Duration = new Trend('custom_duration');
+const Reqs = new Counter('custom_requests');
+const FailRate = new Rate('custom_fail_rate');
+const SuccessRate = new Rate('custom_success_rate');
+const Errors = new Counter('custom_errors');
+
+// ----------------- FUNÇÕES AUXILIARES -----------------
+function textoPlanejamento() {
+  return '<p>' + 'Planejamento de aula automatizado. '.repeat(10) + '</p>';
+}
+
+function track(res, name) {
+  if (res.status !== 200) {
+    console.log(`⚠️ [${name}] falhou. Status: ${res.status}`);
+    console.log(`Body: ${res.body}`);
+  }
+
+  Duration.add(res.timings.duration);
+  Reqs.add(1);
+  FailRate.add(res.status === 0 || res.status > 399);
+  SuccessRate.add(res.status > 0 && res.status < 399);
+
+  check(res, {
+    [`${name} - status 200`]: (r) => r.status === 200
+  }) || Errors.add(1);
+}
+
 // ---------------- CONFIG ----------------
 export const options = {
   stages: [
     { duration: '30s', target: 50 },
-    // { duration: '1m', target: 17 },
-    // { duration: '10s', target: 0 }
   ],
   thresholds: {
     http_req_failed: ['rate<0.05'],
@@ -63,9 +95,7 @@ export default function () {
     }
   );
 
-  check(loginRes, {
-    'login ok': (r) => r.status === 200,
-  });
+  track(loginRes, 'login');
 
   const token = loginRes.json('token');
 
@@ -81,45 +111,37 @@ export default function () {
     },
   };
 
- // ---------------- INSCRIÇÃO ----------------
+  // ---------------- INSCRIÇÃO ----------------
 
-const propostaTurmaId =
-PROPOSTA_TURMA_IDS[(__VU + __ITER) % PROPOSTA_TURMA_IDS.length];
+  const propostaTurmaId =
+    PROPOSTA_TURMA_IDS[(__VU + __ITER) % PROPOSTA_TURMA_IDS.length];
 
-const payloadInscricao = JSON.stringify({
-  propostaTurmaId: propostaTurmaId,
-  cargoCodigo: CARGO_CODIGO,
-  cargoDreCodigo: CARGO_DRE_CODIGO,
-  cargoUeCodigo: CARGO_UE_CODIGO,
-  tipoVinculo: TIPO_VINCULO,
-  vagaRemanescente: false,
-  usuarioAcessibilidade: {
-    possuiDeficiencia: false,
-    salvar: true
-  }
-});
+  const payloadInscricao = JSON.stringify({
+    propostaTurmaId: propostaTurmaId,
+    cargoCodigo: CARGO_CODIGO,
+    cargoDreCodigo: CARGO_DRE_CODIGO,
+    cargoUeCodigo: CARGO_UE_CODIGO,
+    tipoVinculo: TIPO_VINCULO,
+    vagaRemanescente: false,
+    usuarioAcessibilidade: {
+      possuiDeficiencia: false,
+      salvar: true
+    }
+  });
 
-const resInscricao = http.post(
-  `${BASE_URL}/api/v1/Inscricao`,
-  payloadInscricao,
-  authHeaders
-);
+  const resInscricao = http.post(
+    `${BASE_URL}/api/v1/Inscricao`,
+    payloadInscricao,
+    authHeaders
+  );
 
-postInscricaoTrend.add(resInscricao.timings.duration);
+  postInscricaoTrend.add(resInscricao.timings.duration);
 
-console.log(
-  `VU ${__VU} | Usuario ${usuario.login} | Status inscrição: ${resInscricao.status}`
-);
+  console.log(
+    `VU ${__VU} | Usuario ${usuario.login} | Turma ${propostaTurmaId} | Status inscrição: ${resInscricao.status}`
+  );
 
-// log detalhado para debug
-if (resInscricao.status !== 200 && resInscricao.status !== 201) {
-  console.log(`Erro inscrição usuário ${usuario.login}`);
-  console.log(`Resposta API: ${resInscricao.body}`);
-}
-
-check(resInscricao, {
-  'inscricao sucesso': (r) => r.status === 200 || r.status === 201,
-});
+  track(resInscricao, 'inscricao');
 
   // ---------------- CONSULTAS ----------------
   group('Fluxo de consulta formação', () => {
@@ -137,13 +159,13 @@ check(resInscricao, {
     ];
 
     endpoints.forEach((url) => {
+
       const res = http.get(`${BASE_URL}${url}`, authHeaders);
 
       inscricaoTrend.add(res.timings.duration);
 
-      check(res, {
-        [`${url} 200`]: (r) => r.status === 200,
-      });
+      track(res, url);
+
     });
 
   });
