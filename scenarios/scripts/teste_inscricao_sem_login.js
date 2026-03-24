@@ -1,5 +1,5 @@
 import http from 'k6/http';
-import { check, sleep, group } from 'k6';
+import { check, sleep } from 'k6';
 import { Trend, Rate, Counter } from 'k6/metrics';
 import { SharedArray } from 'k6/data';
 import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
@@ -13,6 +13,12 @@ const usuarios = new SharedArray('usuarios', function () {
 // ---------------- ENV ----------------
 const BASE_URL = __ENV.BASE_URL || 'https://hom-conectaformacao.sme.prefeitura.sp.gov.br';
 const TOKEN = __ENV.TOKEN;
+
+const VUS = Number(__ENV.VUS || 400);
+
+const TEST_DURATION = __ENV.DURATION || '5m';
+
+const ITERATIONS = Number(__ENV.ITERATIONS || 100);
 
 const PROPOSTA_TURMA_IDS = (__ENV.PROPOSTA_TURMA_ID || '')
   .split(',')
@@ -52,8 +58,9 @@ function track(res, name) {
 
 // ---------------- CONFIG ----------------
 export const options = {
-  vus: 400,
-  iterations: 400,
+  vus: VUS,
+  iterations: ITERATIONS,                 
+  duration: TEST_DURATION,
   thresholds: {
     http_req_failed: ['rate<0.05'],
     http_req_duration: ['p(95)<2000'],
@@ -62,7 +69,8 @@ export const options = {
 
 // ---------------- TEST ----------------
 export default function () {
-  const usuario = usuarios[(__VU - 1) % usuarios.length];
+
+  const usuario = usuarios[Math.floor(Math.random() * usuarios.length)];
   const index = (__VU - 1) % usuarios.length;
 
   const PROPOSTA_TURMA_ID =
@@ -101,16 +109,9 @@ export default function () {
 
 // ---------------- RELATÓRIO ----------------
 export function handleSummary(data) {
-  try {
-    return {
-      './scenarios/report/teste_inscricao_sem_login.html': htmlReport(data),
-    };
-  } catch (e) {
-    console.error('Erro ao gerar relatório HTML:', e);
+  const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
 
-    return {
-      'teste_inscricao_sem_login.html': htmlReport(data),
-      stdout: '⚠️ Relatório salvo na raiz pois a pasta scenarios/report não existe',
-    };
-  }
+  return {
+    [`./scenarios/report/teste_inscricao_${timestamp}.html`]: htmlReport(data),
+  };
 }
