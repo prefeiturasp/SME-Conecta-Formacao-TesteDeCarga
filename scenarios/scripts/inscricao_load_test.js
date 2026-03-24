@@ -96,71 +96,71 @@ export default function () {
     return;
   }
 
-  const authHeaders = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-    },
-  };
+  // const authHeaders = {
+  //   headers: {
+  //     Authorization: `Bearer ${token}`,
+  //     'Content-Type': 'application/json',
+  //   },
+  // };
 
   // ---------------- INSCRIÇÃO ----------------
 
-  const propostaTurmaId =
-    PROPOSTA_TURMA_IDS[(__VU + __ITER) % PROPOSTA_TURMA_IDS.length];
+  // const propostaTurmaId =
+  //   PROPOSTA_TURMA_IDS[(__VU + __ITER) % PROPOSTA_TURMA_IDS.length];
 
-  const payloadInscricao = JSON.stringify({
-    propostaTurmaId: propostaTurmaId,
-    cargoCodigo: CARGO_CODIGO,
-    cargoDreCodigo: CARGO_DRE_CODIGO,
-    cargoUeCodigo: CARGO_UE_CODIGO,
-    tipoVinculo: TIPO_VINCULO,
-    vagaRemanescente: false,
-    usuarioAcessibilidade: {
-      possuiDeficiencia: false,
-      salvar: true
-    }
-  });
+  // const payloadInscricao = JSON.stringify({
+  //   propostaTurmaId: propostaTurmaId,
+  //   cargoCodigo: CARGO_CODIGO,
+  //   cargoDreCodigo: CARGO_DRE_CODIGO,
+  //   cargoUeCodigo: CARGO_UE_CODIGO,
+  //   tipoVinculo: TIPO_VINCULO,
+  //   vagaRemanescente: false,
+  //   usuarioAcessibilidade: {
+  //     possuiDeficiencia: false,
+  //     salvar: true
+  //   }
+  // });
 
-  const resInscricao = http.post(
-    `${BASE_URL}/api/v1/Inscricao`,
-    payloadInscricao,
-    authHeaders
-  );
+  // const resInscricao = http.post(
+  //   `${BASE_URL}/api/v1/Inscricao`,
+  //   payloadInscricao,
+  //   authHeaders
+  // );
 
-  postInscricaoTrend.add(resInscricao.timings.duration);
+  // postInscricaoTrend.add(resInscricao.timings.duration);
 
-  console.log(
-    `VU ${__VU} | Usuario ${usuario.login} | Turma ${propostaTurmaId} | Status inscrição: ${resInscricao.status}`
-  );
+  // console.log(
+  //   `VU ${__VU} | Usuario ${usuario.login} | Turma ${propostaTurmaId} | Status inscrição: ${resInscricao.status}`
+  // );
 
-  track(resInscricao, 'inscricao');
+  // track(resInscricao, 'inscricao');
 
   // ---------------- CONSULTAS ----------------
-  group('Fluxo de consulta formação', () => {
+  // group('Fluxo de consulta formação', () => {
 
-    const endpoints = [
-      `/api/v1/Inscricao`,
-      `/api/v1/publico/cargo-funcao/tipo/1`,
-      `/api/v1/publico/area-promotora`,
-      `/api/v1/publico/formato`,
-      `/api/v1/publico/palavra-chave`,
-      `/api/v1/publico/formacao-listagem`,
-      `/api/v1/publico/formacao-detalhada/${FORMACAO_ID}`,
-      `/api/v1/Inscricao/turmas/${FORMACAO_ID}`,
-      `/api/v1/Inscricao/dados-inscricao-proposta/${FORMACAO_ID}`,
-    ];
+  //   const endpoints = [
+  //     `/api/v1/Inscricao`,
+  //     `/api/v1/publico/cargo-funcao/tipo/1`,
+  //     `/api/v1/publico/area-promotora`,
+  //     `/api/v1/publico/formato`,
+  //     `/api/v1/publico/palavra-chave`,
+  //     `/api/v1/publico/formacao-listagem`,
+  //     `/api/v1/publico/formacao-detalhada/${FORMACAO_ID}`,
+  //     `/api/v1/Inscricao/turmas/${FORMACAO_ID}`,
+  //     `/api/v1/Inscricao/dados-inscricao-proposta/${FORMACAO_ID}`,
+  //   ];
 
-    endpoints.forEach((url) => {
+  //   endpoints.forEach((url) => {
 
-      const res = http.get(`${BASE_URL}${url}`, authHeaders);
+  //     const res = http.get(`${BASE_URL}${url}`, authHeaders);
 
-      inscricaoTrend.add(res.timings.duration);
+  //     inscricaoTrend.add(res.timings.duration);
 
-      track(res, url);
+  //     track(res, url);
 
-    });
+  //   });
 
-  });
+  // });
 
   sleep(1);
 }

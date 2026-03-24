@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "acessos:local": "k6 run -e BASE_URL=https://localhost:7178 scenarios/scripts/inscricao_load_test_local.js",
+    "acessos:remote": "k6 run -e BASE_URL=https://hom-acessos.sme.prefeitura.sp.gov.br scenarios/scripts/inscricao_load_test_local.js",
+    "conecta:local": "k6 run -e BASE_URL=https://localhost:7064 scenarios/scripts/inscricao_load_test.js",
+    "conecta:remote": "k6 run -e BASE_URL=https://hom-conectaformacao.sme.prefeitura.sp.gov.br scenarios/scripts/inscricao_load_test.js",
+    "inscricao:local": "k6 run -e BASE_URL=https://localhost:7064 scenarios/scripts/inscricao_conecta_local.js"
   },
   "keywords": [],
   "author": "",
