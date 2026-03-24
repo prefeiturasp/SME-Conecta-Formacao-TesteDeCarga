@@ -13,13 +13,13 @@ const usuarios = new SharedArray('usuarios', function () {
 });
 
 // ---------------- ENV ----------------
-const BASE_URL = __ENV.BASE_URL || 'https://localhost:7064';
+const BASE_URL = __ENV.BASE_URL || 'https://hom-conectaformacao.sme.prefeitura.sp.gov.br';
 const TOKEN = __ENV.TOKEN;
 
-const PROPOSTA_TURMA_ID = Number(__ENV.PROPOSTA_TURMA_ID || '15548');
-const CARGO_CODIGO = __ENV.CARGO_CODIGO || '3213';
-const CARGO_DRE_CODIGO = __ENV.CARGO_DRE_CODIGO || '109300';
-const CARGO_UE_CODIGO = __ENV.CARGO_UE_CODIGO || '019199';
+const PROPOSTA_TURMA_ID = Number(__ENV.PROPOSTA_TURMA_ID );
+const CARGO_CODIGO = __ENV.CARGO_CODIGO;
+const CARGO_DRE_CODIGO = __ENV.CARGO_DRE_CODIGO;
+const CARGO_UE_CODIGO = __ENV.CARGO_UE_CODIGO;
 const TIPO_VINCULO = Number(__ENV.TIPO_VINCULO || '1');
 
 // ---------------- MÉTRICAS ----------------
@@ -61,7 +61,7 @@ export default function () {
 
   const usuario = usuarios[(__VU - 1) % usuarios.length];
   const index = (__VU - 1) % usuarios.length;
-
+  console.log(`usuario cadastrado: ${usuario.login}, ${usuario.senha}`);
   // ---------------- INSCRIÇÃO ----------------
   const payloadInscricao = JSON.stringify({
     propostaTurmaId: PROPOSTA_TURMA_ID,
